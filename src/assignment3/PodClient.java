@@ -16,6 +16,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
  * The {@code PodClient} class is designed to connect to the Poem of the Day (PoD) server,
  * display a list of available poems to the user, and allow the user to select a poem to be displayed.
  * It handles communication with the server using TCP/IP sockets and processes server responses

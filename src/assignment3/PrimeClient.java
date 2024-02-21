@@ -3,6 +3,8 @@ package assignment3;
 import java.rmi.Naming;
 import java.util.Scanner;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
  * The client application for the Prime Calculator.
  * It allows users to specify a range and requests the server to find the largest prime number within that range.
  */

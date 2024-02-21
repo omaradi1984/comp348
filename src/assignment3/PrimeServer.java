@@ -2,6 +2,8 @@ package assignment3;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
  * The server application for the Prime Calculator.
  * It registers an instance of {@link PrimeCalculatorImpl} in the RMI registry for clients to invoke remotely.
  */

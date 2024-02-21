@@ -3,6 +3,8 @@ package assignment3;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
  * Implementation of the {@link PrimeCalculator} remote interface.
  * This class provides the functionality to find the largest prime number within a specified range.
  */

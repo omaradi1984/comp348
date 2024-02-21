@@ -36,6 +36,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
  * The {@code PodServer} class implements a server for the Poem of the Day (PoD) protocol.
  * It listens for connections on a specified port and interacts with clients to provide
  * a selection of poems based on client input. The poems are loaded from a text file specified
