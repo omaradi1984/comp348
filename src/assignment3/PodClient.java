@@ -5,6 +5,7 @@ package assignment3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -44,23 +45,24 @@ public class PodClient {
             // Display the welcome message from the server
             System.out.println("Connected to Poem of the Day Server.");
             String responseLine;
+            
             while ((responseLine = in.readLine()) != null && !responseLine.isEmpty()) {
                 System.out.println(responseLine);
                 if (responseLine.startsWith("Please select a poem by number:")) {
                     break; // Stop reading from server and wait for user input
-                }
+                };
             }
-
+            
             // Send user's poem selection to the server
             System.out.print("Your choice: ");
             String poemNumber = scanner.nextLine();
             out.println(poemNumber);
-
+            out.flush();
             // Read and display the poem or error message from the server
-            while ((responseLine = in.readLine()) != null && !responseLine.isEmpty()) {
-                System.out.println(responseLine);
+            while ((responseLine = in.readLine()) != null) {
+            	System.out.println(responseLine);
             }
-
+            System.out.println("\nEND OF LINE");
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
             e.printStackTrace();

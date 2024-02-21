@@ -103,7 +103,7 @@ public class PodServer {
             System.exit(1);
         }
     }
-
+    
     private static class ClientHandler implements Runnable {
         private Socket connectionSocket;
 
@@ -118,14 +118,17 @@ public class PodServer {
 
                 outToClient.writeBytes("Welcome to the Poem of the Day Server!\n");
                 listPoems(outToClient);
+                
+                outToClient.flush();
 
                 String selection = inFromClient.readLine();
                 int poemIndex = Integer.parseInt(selection.trim()) - 1;
                 if (poemIndex >= 0 && poemIndex < poems.size()) {
-                    outToClient.writeBytes("\n" + poems.get(poemIndex) + "\n");
+                	outToClient.writeBytes("\n"+poems.get(poemIndex)+"\n");
                 } else {
                     outToClient.writeBytes("Error: Selection is outside the expected range.\n");
                 }
+                outToClient.flush();
             } catch (IOException | NumberFormatException e) {
                 System.out.println("Error handling client: " + e.getMessage());
             } finally {
@@ -151,6 +154,7 @@ public class PodServer {
                 outToClient.writeBytes((i + 1) + ". " + title + "\n");
             }
             outToClient.writeBytes("Please select a poem by number:\n");
+            outToClient.flush();
         }
     }
 }
