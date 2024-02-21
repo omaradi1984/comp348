@@ -1,6 +1,8 @@
 package assignment4;
 
 /**
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
+ * 
  * The {@code EnhancedEmailSender} class provides functionality to send an email with multiple recipients
  * in the To, CC, and BCC fields. It reads the email configuration and content from a specified text file,
  * including server settings, user credentials, recipients, subject, and the body of the email.

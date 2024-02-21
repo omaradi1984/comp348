@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Properties;
 /**
+ * 
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
+ * 
  * The {@code EmailAttachementSender} class extends email sending capabilities to include attachments.
  * This class allows sending emails with multiple recipients (To, CC, BCC), subject, body, and attachments
  * by reading configuration from a specified file or directly through method parameters.

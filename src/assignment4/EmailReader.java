@@ -5,6 +5,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.search.FlagTerm;
 import java.util.Properties;
 /**
+ * I declare that this assignment is my own work and that all material previously written or published in any source by any other person has been duly acknowledged in the assignment. I have not submitted this work, or a significant part thereof, previously as part of any academic program. In submitting this assignment I give permission to copy it for assessment purposes only.
+ * 
  * The {@code EmailReader} class provides functionalities to connect to an email server using IMAP,
  * list unread emails, and retrieve specific emails based on a provided reference number.
  * It supports command-line arguments to specify the email server, user credentials, and optionally
