@@ -5,14 +5,44 @@ import javax.mail.internet.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Properties;
-
+/**
+ * The {@code EmailAttachementSender} class extends email sending capabilities to include attachments.
+ * This class allows sending emails with multiple recipients (To, CC, BCC), subject, body, and attachments
+ * by reading configuration from a specified file or directly through method parameters.
+ * 
+ * It supports connecting to any SMTP server specified in the configuration, including authentication,
+ * and handles MIME types to attach files to the email.
+ * 
+ * Usage involves creating an instance of the class, setting the necessary properties, and calling the
+ * {@code EmailAttachementSender} method with appropriate parameters.
+ */
 public class EmailAttachementSender {
-
+	/**
+     * Main method to demonstrate the usage of {@code EnhancedEmailSenderWithAttachment}.
+     * 
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         String filePath = "path/to/email/config.txt"; // Adjust the file path
         sendEmail(filePath, "path/to/attachment/file");
     }
-
+    /**
+     * Sends an email with the specified parameters including attachments.
+     * This method sets up the mail session, configures SMTP properties, and sends the email to the specified recipients
+     * with the provided subject, body, and attachments.
+     *
+     * @param host The SMTP server to connect to.
+     * @param port The SMTP server port.
+     * @param user The user's email address for SMTP authentication.
+     * @param password The password for SMTP authentication.
+     * @param to Array of primary recipient email addresses.
+     * @param cc Array of CC recipient email addresses, can be {@code null}.
+     * @param bcc Array of BCC recipient email addresses, can be {@code null}.
+     * @param subject The subject of the email.
+     * @param body The body text of the email.
+     * @param attachments Array of file paths for attachments, can be {@code null}.
+     * @throws MessagingException If there is an error during email composition or sending.
+     */
     private static void sendEmail(String filePath, String attachmentPath) {
     	Properties emailProps = new Properties();
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

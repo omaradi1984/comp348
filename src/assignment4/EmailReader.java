@@ -4,9 +4,26 @@ import javax.mail.*;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.search.FlagTerm;
 import java.util.Properties;
-
+/**
+ * The {@code EmailReader} class provides functionalities to connect to an email server using IMAP,
+ * list unread emails, and retrieve specific emails based on a provided reference number.
+ * It supports command-line arguments to specify the email server, user credentials, and optionally
+ * the email number to retrieve.
+ *
+ * Usage:
+ * To list unread emails:
+ * {@code java GetMail <mail server> <email> <password>}
+ * 
+ * To retrieve a specific email by its number:
+ * {@code java GetMail <mail server> <email> <password> <email number>}
+ */
 public class EmailReader {
-
+	/**
+     * The main method that processes input arguments and either lists unread emails or retrieves
+     * a specific email based on the provided reference number.
+     *
+     * @param args Command line arguments containing the mail server, email, password, and optionally the email number.
+     */
     public static void main(String[] args) {
         if (args.length < 3) {
             System.out.println("Usage: java GetMail <mail server> <email> <password> [<email number>]");
@@ -20,7 +37,16 @@ public class EmailReader {
 
         checkInbox(host, "imaps", user, password, emailNumber);
     }
-
+    /**
+     * Connects to the email server and either lists all unread emails or retrieves a specific email,
+     * depending on whether a reference number is provided.
+     *
+     * @param host The email server address.
+     * @param storeType The store type, typically "imaps" for secure IMAP.
+     * @param user The user's email address.
+     * @param password The user's password.
+     * @param emailNumber The optional reference number of a specific email to retrieve. If null, all unread emails are listed.
+     */
     public static void checkInbox(String host, String storeType, String user, String password, Integer emailNumber) {
         try {
             // Set up the mail server properties
