@@ -23,19 +23,31 @@ import java.util.Properties;
  * retrieve.
  *
  * Usage: To list unread emails:
- * {@code java GetMail <mail server> <email> <password>}
+ * {@code java EmailReader <mail server> <email> <password>}
  * 
  * To retrieve a specific email by its number:
- * {@code java GetMail <mail server> <email> <password> <email number>}
+ * {@code java EmailReader <mail server> <email> <password> <email number>}
+ * 
+ * * <h2>Test Scenarios:</h2>
+ * <ul>
+ *   <li><strong>Scenario 1:</strong> List all unread emails when no email number is provided. This can be tested by providing only the server, email, and password as arguments.</li>
+ *   <li><strongScenario 2:</strong> Retrieve a specific email when an email number is provided. This requires providing all four arguments, with the last being the number of the email to retrieve.</li>
+ *   <li><strong>Scenario 3:</strong> Handle incorrect login information gracefully, ensuring the program provides a meaningful error message without crashing.</li>
+ *   <li><strong>Scenario 4:</strong> Verify that the program can handle an invalid email number, such as one that is out of range, by providing an appropriate error message or fallback behavior.</li>
+ * </ul>
  */
 public class EmailReader {
 	/**
-	 * The main method that processes input arguments and either lists unread emails
-	 * or retrieves a specific email based on the provided reference number.
-	 *
-	 * @param args Command line arguments containing the mail server, email,
-	 *             password, and optionally the email number.
-	 */
+     * Connects to the email server and either lists all unread emails or retrieves
+     * a specific email, depending on whether a reference number is provided.
+     *
+     * @param host        The email server address.
+     * @param storeType   The store type, typically "imaps" for secure IMAP.
+     * @param user        The user's email address.
+     * @param password    The user's password.
+     * @param emailNumber The optional reference number of a specific email to
+     *                    retrieve. If null, all unread emails are listed.
+     */
 	public static void main(String[] args) {
 		if (args.length < 3) {
 			System.out.println("Usage: java EmailReader <mail server> <email> <password> [<email number>]");
