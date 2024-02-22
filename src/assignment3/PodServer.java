@@ -6,7 +6,6 @@ package assignment3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,24 +14,6 @@ import java.net.Socket;
  *
  */
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-/**
- * The {@code PodServer} class implements a server for the Poem of the Day (PoD) protocol.
- * It listens for connections on a specified port and interacts with clients to provide
- * a selection of poems based on client input. The poems are loaded from a text file specified
- * at server startup. The server responds with a welcome message, lists available poems,
- * and waits for the client to select a poem. It then sends the selected poem to the client
- * or an error message if the input is invalid, before terminating the session.
- * 
- * <p>Usage to start the server: {@code java PodServer <poem file>}, where {@code <poem file>}
- * is the path to a text file containing poems separated by "---".</p>
- */
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 /**

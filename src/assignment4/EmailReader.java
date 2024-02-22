@@ -1,7 +1,7 @@
 package assignment4;
 
 import javax.mail.*;
-import javax.mail.internet.MimeBodyPart;
+import javax.mail.Flags.Flag;
 import javax.mail.search.FlagTerm;
 import java.util.Properties;
 /**
@@ -28,7 +28,7 @@ public class EmailReader {
      */
     public static void main(String[] args) {
         if (args.length < 3) {
-            System.out.println("Usage: java GetMail <mail server> <email> <password> [<email number>]");
+            System.out.println("Usage: java EmailReader <mail server> <email> <password> [<email number>]");
             return;
         }
 
@@ -56,6 +56,7 @@ public class EmailReader {
             properties.put("mail.imap.host", host);
             properties.put("mail.imap.port", "993");
             properties.put("mail.imap.starttls.enable", "true");
+            properties.put("mail.imap.ssl.trust", host);
             Session emailSession = Session.getDefaultInstance(properties);
 
             // Connect to the email store
@@ -64,7 +65,7 @@ public class EmailReader {
 
             // Open the INBOX folder
             Folder emailFolder = store.getFolder("INBOX");
-            emailFolder.open(Folder.READ_ONLY);
+            emailFolder.open(Folder.READ_WRITE);
 
             if (emailNumber == null) {
                 // Fetch and list all unread emails if no specific email number is provided
@@ -77,10 +78,13 @@ public class EmailReader {
                 }
             } else {
                 // Fetch and display details of the specific email if the email number is provided
-                Message message = emailFolder.getMessage(emailNumber);
+            	Message[] messages = emailFolder.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));
+            	
+                Message message = emailFolder.getMessage(messages[emailNumber-1].getMessageNumber());
                 System.out.println("Subject: " + message.getSubject());
                 System.out.println("From: " + message.getFrom()[0]);
                 System.out.println("Text: " + message.getContent().toString());
+                message.setFlag(Flag.SEEN, true);
             }
 
             // Close the folder and store

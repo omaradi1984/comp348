@@ -84,12 +84,18 @@ public class EmailSender {
      * The main method that initiates the email sending process by reading the configuration
      * from the specified file path.
      *
-     * @param args Command line arguments (not used).
+     * @param args Command line arguments.
+     * 
      */
-
+	private static String EMAIL_FILE = null;
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\omara\\eclipse-workspace\\comp348\\src\\assignment4\\sampleEmail.txt"; // Adjust the file path
-		sendEmail(filePath);
+		
+		if(args.length < 1) {
+			System.out.println("Please provide an email file path to send the email.");
+			System.exit(1);
+		}
+		EMAIL_FILE = args[0];
+		sendEmail(EMAIL_FILE);
 	}
 
 	private static void sendEmail(String filePath) {
@@ -124,7 +130,8 @@ public class EmailSender {
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.host", emailProps.getProperty("mail.smtp.host"));
-
+			properties.put("mail.smtp.starttls.enable", "true");
+			properties.put("mail.smtp.port", "587");
 			Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(emailProps.getProperty("mail.smtp.user"),

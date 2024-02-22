@@ -23,11 +23,19 @@ public class EmailAttachementSender {
 	/**
      * Main method to demonstrate the usage of {@code EnhancedEmailSenderWithAttachment}.
      * 
-     * @param args Command line arguments (not used).
+     * @param args Command line arguments.
      */
+	private static String EMAIL_FILE = null, ATTACHEMENT_FILE = null;
     public static void main(String[] args) {
-        String filePath = "path/to/email/config.txt"; // Adjust the file path
-        sendEmail(filePath, "path/to/attachment/file");
+        
+    	if(args.length < 2) {
+			System.out.println("Please provide an email file path AND an attachment file path to send the email.");
+			System.exit(1);
+		}
+    	
+    	EMAIL_FILE = args[0]; 
+    	ATTACHEMENT_FILE = args[1];
+        sendEmail(EMAIL_FILE, ATTACHEMENT_FILE);
     }
     /**
      * Sends an email with the specified parameters including attachments.
@@ -78,7 +86,8 @@ public class EmailAttachementSender {
 			Properties properties = System.getProperties();
 			properties.put("mail.smtp.auth", "true");
 			properties.put("mail.smtp.host", emailProps.getProperty("mail.smtp.host"));
-
+			properties.put("mail.smtp.starttls.enable", "true");
+			properties.put("mail.smtp.port", "587");
 			Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(emailProps.getProperty("mail.smtp.user"),
